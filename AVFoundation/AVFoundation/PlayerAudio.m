@@ -23,12 +23,15 @@
 @property (nonatomic, assign) BOOL resetTime;
 @property (nonatomic, assign) BOOL isHighlight;
 
+@property (nonatomic, strong) UITextField *textField;
+
 @end
 
 @implementation PlayerAudio
 
 -(void)dealloc {
     NSLog(@"dealloc");
+    [self.seekSlider removeObserver:self forKeyPath:@"highlighted"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
