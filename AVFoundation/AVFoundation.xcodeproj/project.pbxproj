@@ -21,6 +21,8 @@
 		7C0087381D03FE9A00EC5514 /* UIControl+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087321D03FE9A00EC5514 /* UIControl+Extension.m */; };
 		7C0087391D03FE9A00EC5514 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087341D03FE9A00EC5514 /* UIImage+Extension.m */; };
 		7C00873A1D03FE9A00EC5514 /* UIView+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087361D03FE9A00EC5514 /* UIView+Metrics.m */; };
+		7C00873D1D040D2B00EC5514 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7C00873C1D040D2B00EC5514 /* demo.mp3 */; };
+		7C0087401D040D4C00EC5514 /* PlayerAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C00873F1D040D4C00EC5514 /* PlayerAudio.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,9 @@
 		7C0087341D03FE9A00EC5514 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		7C0087351D03FE9A00EC5514 /* UIView+Metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Metrics.h"; sourceTree = "<group>"; };
 		7C0087361D03FE9A00EC5514 /* UIView+Metrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Metrics.m"; sourceTree = "<group>"; };
+		7C00873C1D040D2B00EC5514 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = "<group>"; };
+		7C00873E1D040D4C00EC5514 /* PlayerAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAudio.h; sourceTree = "<group>"; };
+		7C00873F1D040D4C00EC5514 /* PlayerAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerAudio.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +133,9 @@
 				7C0086D51D03F77200EC5514 /* ViewController.m */,
 				7C0087011D03F96600EC5514 /* SpeechSynthesizer.h */,
 				7C0087021D03F96600EC5514 /* SpeechSynthesizer.m */,
+				7C00873E1D040D4C00EC5514 /* PlayerAudio.h */,
+				7C00873F1D040D4C00EC5514 /* PlayerAudio.m */,
+				7C00873B1D040D0C00EC5514 /* resource */,
 				7C0086CE1D03F77200EC5514 /* Supporting Files */,
 			);
 			path = AVFoundation;
@@ -136,8 +144,8 @@
 		7C0086CE1D03F77200EC5514 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C0086D71D03F77200EC5514 /* Main.storyboard */,
 				7C0086DA1D03F77200EC5514 /* Assets.xcassets */,
+				7C0086D71D03F77200EC5514 /* Main.storyboard */,
 				7C0086DC1D03F77200EC5514 /* LaunchScreen.storyboard */,
 				7C0086DF1D03F77200EC5514 /* Info.plist */,
 				7C00871B1D03FABF00EC5514 /* PrefixHeader.pch */,
@@ -177,6 +185,14 @@
 				7C0087361D03FE9A00EC5514 /* UIView+Metrics.m */,
 			);
 			path = categray;
+			sourceTree = "<group>";
+		};
+		7C00873B1D040D0C00EC5514 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				7C00873C1D040D2B00EC5514 /* demo.mp3 */,
+			);
+			name = resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +301,7 @@
 				7C0086DE1D03F77200EC5514 /* LaunchScreen.storyboard in Resources */,
 				7C0086DB1D03F77200EC5514 /* Assets.xcassets in Resources */,
 				7C0086D91D03F77200EC5514 /* Main.storyboard in Resources */,
+				7C00873D1D040D2B00EC5514 /* demo.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0087401D040D4C00EC5514 /* PlayerAudio.m in Sources */,
 				7C0086D61D03F77200EC5514 /* ViewController.m in Sources */,
 				7C0087391D03FE9A00EC5514 /* UIImage+Extension.m in Sources */,
 				7C0086D31D03F77200EC5514 /* AppDelegate.m in Sources */,

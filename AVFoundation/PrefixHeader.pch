@@ -6,5 +6,9 @@
 #import "UIView+Metrics.h"
 #import "UIColor+Addition.h"
 #import <Foundation/Foundation.h>
+
 #define WEAKSELF __weak __typeof(&*self)weakSelf = self
+
+#define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
 #endif

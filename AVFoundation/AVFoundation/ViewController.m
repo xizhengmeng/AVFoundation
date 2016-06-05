@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SpeechSynthesizer.h"
+#import "PlayerAudio.h"
 #define CELL @"cell"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -19,7 +20,7 @@
 - (NSMutableArray *)dataArr {
     if (!_dataArr) {
         _dataArr = [NSMutableArray array];
-        [_dataArr addObjectsFromArray:@[@"1.文本到语音",@"1.文本到语音"]];
+        [_dataArr addObjectsFromArray:@[@"1.文本到语音",@"2.播放音乐AVAuidoPlayer"]];
     }
     return _dataArr;
 }
@@ -39,7 +40,7 @@
     
     [self.view addSubview:self.tableView];
     
-    
+    self.title = @"AVFoundation";
 }
 
 #pragma mark - datasource
@@ -77,7 +78,12 @@
             [self.navigationController pushViewController:sp animated:YES];
         }
             break;
-            
+        case 1:
+        {
+            PlayerAudio *audio = [[PlayerAudio alloc] init];
+            [self.navigationController pushViewController:audio animated:YES];
+        }
+            break;
         default:
             break;
     }

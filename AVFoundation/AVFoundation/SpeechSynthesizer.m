@@ -98,6 +98,9 @@
     [self.tableView reloadData];
 }
 
+- (void)tapTheView {
+    [self.textfield resignFirstResponder];
+}
 #pragma lazyload
 - (UITableView *)tableView {
     if (_tableView == nil) {
@@ -109,6 +112,8 @@
         _tableView.height = kScreenH - 60;
 //        _tableView.y = 64;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheView)];
+        [_tableView addGestureRecognizer:tap];
     }
     return _tableView;
 }
