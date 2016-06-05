@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SpeechSynthesizer.h"
 #define CELL @"cell"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -68,6 +69,18 @@
 
 #pragma mark - delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    switch (indexPath.row) {
+        case 0:
+        {
+            SpeechSynthesizer *sp = [[SpeechSynthesizer alloc] init];
+            [self.navigationController pushViewController:sp animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
     
 }
 
