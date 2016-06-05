@@ -9,7 +9,7 @@
 #import "PlayerAudio.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface PlayerAudio()
+@interface PlayerAudio()<AVAudioPlayerDelegate>
 @property (nonatomic, strong) UIButton *play1;///<播放本地
 @property (nonatomic, strong) UIButton *play2;///<播放网络
 @property (nonatomic, strong) AVAudioPlayer*player1;///<播放器
@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) UISlider *seekSlider;//进度条
 @property (nonatomic, strong) UISlider *voiceSlider;//音量
+@property (nonatomic, strong) UISlider *rateSlider;//音量
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic, assign) double setTime;
@@ -24,6 +25,7 @@
 @property (nonatomic, assign) BOOL isHighlight;
 
 @property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) UIButton *confirmBtn;
 
 @end
 
@@ -45,6 +47,23 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    NSError *error;
+    //现在可以做到切换静音键的时候，不会被中断
+    if (![session setCategory:AVAudioSessionCategoryPlayback error:&error]) {
+        NSLog(@"category error:%@", error.localizedDescription);
+    }
+    
+    if (![session setActive:YES error:&error]) {
+        NSLog(@"activity error:%@", error.localizedDescription);
+    }
+    
+    //处理中断事件
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleInterruption:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
+    
+    
+    //处理线路改变
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRouteChange:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
     [self createSubviews];
 
     self.resetTime = NO;
@@ -74,12 +93,16 @@
     
     [self.view addSubview:self.voiceSlider];
     self.voiceSlider.bottom = self.seekSlider.y - 10;
+    self.voiceSlider.right = kScreenW - 20;
+    
+    [self.view addSubview:self.rateSlider];
+    self.rateSlider.right = kScreenW - 20;
+    self.rateSlider.bottom = self.voiceSlider.y - 10;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     
-    NSLog(@"---%@---%@", keyPath, object);
     if([keyPath isEqualToString:@"highlighted"])
     {
         UISlider *slider = object;
@@ -94,7 +117,10 @@
 - (void)playFormDisk {
     NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:@"demo" withExtension:@".mp3"];
     self.player1 = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
-    
+    self.player1.enableRate = YES;//想要设置速率，要先设置这个属性
+    self.player1.rate = 2.0;
+    self.player1.numberOfLoops = -1;
+    self.player1.delegate = self;
     if (self.player1) {
         [self.player1 prepareToPlay];
         self.play.enabled = YES;
@@ -131,8 +157,7 @@
     
     int curentTime = (int)self.player1.currentTime;
     int setTime = (int)self.setTime;
-    
-    NSLog(@"%d---%d", curentTime, setTime);
+
     
     if (self.resetTime && (curentTime == setTime)) {
         self.resetTime = NO;
@@ -158,6 +183,33 @@
     self.player1.volume = slider.value;
 }
 
+- (void)panSliderValueChanged:(UISlider *)slider {
+    self.player1.rate = slider.value * 2.0;
+}
+
+- (void)handleInterruption:(NSNotification *)noti {
+    NSDictionary *info = noti.userInfo;
+    AVAudioSessionInterruptionType type = [info[AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
+    if (type == AVAudioSessionInterruptionTypeBegan) {
+        //打扰开始，更改按钮状态
+    }else {
+        //打扰结束，更改按钮状态
+    }
+}
+
+- (void)handleRouteChange:(NSNotification *)noti {
+    NSDictionary *info = noti.userInfo;
+    AVAudioSessionRouteChangeReason type = [info[AVAudioSessionRouteChangeReasonKey] unsignedIntegerValue];
+    if (type == AVAudioSessionRouteChangeReasonOldDeviceUnavailable) {
+        AVAudioSessionRouteDescription *previousRoute = info[AVAudioSessionRouteChangeReasonKey];
+        AVAudioSessionPortDescription *previousOutput = previousRoute.outputs[0];
+        NSString *portType = previousOutput.portType;
+        //如果是耳机
+        if ([portType isEqualToString:AVAudioSessionPortHeadphones]) {
+            
+        }
+    }
+}
 #pragma mark - lazyload
 - (UIButton *)play1 {
     if (!_play1) {
@@ -210,4 +262,28 @@
     }
     return _voiceSlider;
 }
+
+- (UISlider *)rateSlider {
+    if (!_rateSlider) {
+        _rateSlider = [[UISlider alloc] init];
+        _rateSlider.size = CGSizeMake(kScreenW - 150, 20);
+        [_rateSlider addTarget:self action:@selector(panSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _rateSlider;
+}
+
+//其中代理函数有如下几个
+- (void)audioplayerdidfinishplaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    //播放结束时执行的动作
+}
+- (void)audioplayerdecodeerrordidoccur:(AVAudioPlayer *)player error:(NSError *)error{
+    //解码错误执行的动作
+}
+- (void)audioplayerbegininteruption:(AVAudioPlayer *)player{
+    //处理中断的代码
+}
+- (void)audioplayerendinteruption:(AVAudioPlayer *)player{
+    //处理中断结束的代码
+}
+
 @end
