@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UITextField *textfield;
 @property (nonatomic, strong) UIView *textFiledBackView;
 @property (nonatomic, strong) UIButton *sendBtn;
+@property (nonatomic, strong) NSMutableArray *dataArr;
 @end
 @implementation SpeechSynthesizer
 
@@ -42,14 +43,6 @@
     [self.view addSubview:self.textFiledBackView];
     self.textFiledBackView.bottom = kScreenH;
     
-    
-}
-
-- (void)speeker {
-   
-    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:@"Hello Wolrd"];
-    [synthesizer speakUtterance:utterance];
 }
 
 #pragma mark - datasource
@@ -58,7 +51,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,7 +61,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:CELL];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor clearColor];
+    NSString *name;
+    if (indexPath.row < self.dataArr.count) {
+        name = self.dataArr[indexPath.row];
+    }
+    cell.textLabel.text = name;
     //code
     return cell;
 }
@@ -76,6 +75,27 @@
 #pragma mark - delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    NSString *name = cell.textLabel.text;
+    
+    [self speeker:name];
+}
+
+#pragma private method
+- (void)speeker:(NSString *)name {
+    //朗读文字
+    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:name];
+    [synthesizer speakUtterance:utterance];
+}
+
+- (void)sendClick {
+    [self.textfield resignFirstResponder];
+    NSString *textStr = self.textfield.text;
+    [self.dataArr addObject:textStr];
+    self.textfield.text = @"";
+    [self.tableView reloadData];
 }
 
 #pragma lazyload
@@ -88,7 +108,7 @@
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL];
         _tableView.height = kScreenH - 60;
 //        _tableView.y = 64;
-        _tableView.backgroundColor = [UIColor orangeColor];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
@@ -97,8 +117,9 @@
     if (!_textfield) {
         _textfield = [[UITextField alloc] init];
         _textfield.size = CGSizeMake(kScreenW - 80, 50);
-        _textfield.backgroundColor = [UIColor blueColor];
-        _textfield.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _textfield.backgroundColor = [UIColor whiteColor];
+        _textfield.placeholder = @"输入文字，发送后点击朗读";
+        _textfield.layer.borderColor = [UIColor whiteColor].CGColor;
         _textfield.layer.borderWidth = 1;
         _textfield.layer.cornerRadius = 5;
     }
@@ -110,9 +131,12 @@
         _textFiledBackView = [[UIView alloc] init];
         _textFiledBackView.size = CGSizeMake(kScreenW, 60);
         [_textFiledBackView addSubview:self.textfield];
-        _textFiledBackView.backgroundColor = [UIColor whiteColor];
+        _textFiledBackView.backgroundColor = [UIColor lightGrayColor];
         self.textfield.x = 10;
         self.textfield.centerY = 30;
+        [_textFiledBackView addSubview:self.sendBtn];
+        self.sendBtn.right = kScreenW - 20;
+        self.sendBtn.centerY = 30;
     }
     return _textFiledBackView;
 }
@@ -133,17 +157,21 @@
     [self.textfield resignFirstResponder];
 }
 
-- <#name#> {
-    if (!_<#name#>) {
-        _<#name#> = [];
-    }
-    return _<#name#>;
-}
-
-- (void)setSendBtn:(UIButton *)sendBtn {
+- (UIButton *)sendBtn {
     if (!_sendBtn) {
         _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_sendBtn setTitle:@"发送" forState:UIControlStateNormal];
+        [_sendBtn sizeToFit];
+        [_sendBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [_sendBtn addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sendBtn;
+}
+
+- (NSMutableArray *)dataArr {
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
+    }
+    return _dataArr;
 }
 @end
