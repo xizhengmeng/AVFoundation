@@ -111,9 +111,9 @@
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL];
         _tableView.height = kScreenH - 60;
 //        _tableView.y = 64;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheView)];
-        [_tableView addGestureRecognizer:tap];
+//        [_tableView addGestureRecognizer:tap];
     }
     return _tableView;
 }

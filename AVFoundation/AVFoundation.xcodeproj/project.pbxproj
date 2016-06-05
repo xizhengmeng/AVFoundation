@@ -23,6 +23,8 @@
 		7C00873A1D03FE9A00EC5514 /* UIView+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087361D03FE9A00EC5514 /* UIView+Metrics.m */; };
 		7C00873D1D040D2B00EC5514 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7C00873C1D040D2B00EC5514 /* demo.mp3 */; };
 		7C0087401D040D4C00EC5514 /* PlayerAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C00873F1D040D4C00EC5514 /* PlayerAudio.m */; };
+		7C0087431D04410F00EC5514 /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087421D04410F00EC5514 /* VoiceRecorder.m */; };
+		7C0087461D04452600EC5514 /* VoiceRecorderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087451D04452600EC5514 /* VoiceRecorderController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,10 @@
 		7C00873C1D040D2B00EC5514 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = "<group>"; };
 		7C00873E1D040D4C00EC5514 /* PlayerAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAudio.h; sourceTree = "<group>"; };
 		7C00873F1D040D4C00EC5514 /* PlayerAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerAudio.m; sourceTree = "<group>"; };
+		7C0087411D04410F00EC5514 /* VoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorder.h; sourceTree = "<group>"; };
+		7C0087421D04410F00EC5514 /* VoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorder.m; sourceTree = "<group>"; };
+		7C0087441D04452600EC5514 /* VoiceRecorderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorderController.h; sourceTree = "<group>"; };
+		7C0087451D04452600EC5514 /* VoiceRecorderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorderController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,10 @@
 				7C0087021D03F96600EC5514 /* SpeechSynthesizer.m */,
 				7C00873E1D040D4C00EC5514 /* PlayerAudio.h */,
 				7C00873F1D040D4C00EC5514 /* PlayerAudio.m */,
+				7C0087441D04452600EC5514 /* VoiceRecorderController.h */,
+				7C0087451D04452600EC5514 /* VoiceRecorderController.m */,
+				7C0087411D04410F00EC5514 /* VoiceRecorder.h */,
+				7C0087421D04410F00EC5514 /* VoiceRecorder.m */,
 				7C00873B1D040D0C00EC5514 /* resource */,
 				7C0086CE1D03F77200EC5514 /* Supporting Files */,
 			);
@@ -330,9 +340,11 @@
 				7C0086D61D03F77200EC5514 /* ViewController.m in Sources */,
 				7C0087391D03FE9A00EC5514 /* UIImage+Extension.m in Sources */,
 				7C0086D31D03F77200EC5514 /* AppDelegate.m in Sources */,
+				7C0087431D04410F00EC5514 /* VoiceRecorder.m in Sources */,
 				7C0087031D03F96600EC5514 /* SpeechSynthesizer.m in Sources */,
 				7C0087381D03FE9A00EC5514 /* UIControl+Extension.m in Sources */,
 				7C0086D01D03F77200EC5514 /* main.m in Sources */,
+				7C0087461D04452600EC5514 /* VoiceRecorderController.m in Sources */,
 				7C00873A1D03FE9A00EC5514 /* UIView+Metrics.m in Sources */,
 				7C0087371D03FE9A00EC5514 /* UIColor+Addition.m in Sources */,
 			);

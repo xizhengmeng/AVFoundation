@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "SpeechSynthesizer.h"
 #import "PlayerAudio.h"
+#import "VoiceRecorderController.h"
 #define CELL @"cell"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -20,7 +21,7 @@
 - (NSMutableArray *)dataArr {
     if (!_dataArr) {
         _dataArr = [NSMutableArray array];
-        [_dataArr addObjectsFromArray:@[@"1.文本到语音",@"2.播放音乐AVAuidoPlayer"]];
+        [_dataArr addObjectsFromArray:@[@"1.文本到语音",@"2.播放音乐AVAuidoPlayer",@"3.录音"]];
     }
     return _dataArr;
 }
@@ -82,6 +83,12 @@
         {
             PlayerAudio *audio = [[PlayerAudio alloc] init];
             [self.navigationController pushViewController:audio animated:YES];
+        }
+            break;
+        case 2:
+        {
+            VoiceRecorderController *voiceR = [[VoiceRecorderController alloc] init];
+            [self.navigationController pushViewController:voiceR animated:YES];
         }
             break;
         default:
