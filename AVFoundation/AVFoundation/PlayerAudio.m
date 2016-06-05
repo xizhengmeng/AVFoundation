@@ -63,7 +63,8 @@
     
     
     //处理线路改变
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRouteChange:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRouteChange:) name:AVAudioSessionRouteChangeNotification object:[AVAudioSession sharedInstance]];
+    
     [self createSubviews];
 
     self.resetTime = NO;
@@ -199,14 +200,14 @@
 
 - (void)handleRouteChange:(NSNotification *)noti {
     NSDictionary *info = noti.userInfo;
-    AVAudioSessionRouteChangeReason type = [info[AVAudioSessionRouteChangeReasonKey] unsignedIntegerValue];
-    if (type == AVAudioSessionRouteChangeReasonOldDeviceUnavailable) {
-        AVAudioSessionRouteDescription *previousRoute = info[AVAudioSessionRouteChangeReasonKey];
+    AVAudioSessionRouteChangeReason reason = [info[AVAudioSessionRouteChangeReasonKey] unsignedIntegerValue];
+    if (reason == AVAudioSessionRouteChangeReasonOldDeviceUnavailable) {
+        AVAudioSessionRouteDescription *previousRoute = info[AVAudioSessionRouteChangePreviousRouteKey];
         AVAudioSessionPortDescription *previousOutput = previousRoute.outputs[0];
         NSString *portType = previousOutput.portType;
         //如果是耳机
         if ([portType isEqualToString:AVAudioSessionPortHeadphones]) {
-            
+            NSLog(@"耳机");
         }
     }
 }
