@@ -10,6 +10,7 @@
 
 @interface VoiceRecorder()<AVAudioRecorderDelegate>
 @property (nonatomic, strong) AVAudioRecorder *recorder;
+@property (nonatomic, copy) THRecordingStopCompletionHandler completeHandler;
 @end
 
 @implementation VoiceRecorder
@@ -35,13 +36,22 @@
     return self;
 }
 
+#pragma mark - delegate
+//完成录制回调
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag {
+    if (self.completeHandler) {
+        self.completeHandler(flag);
+    }
+}
+
 #pragma mark - lazyload
 
 - (AVAudioRecorder *)recorder {
     if (!_recorder) {
         
-        NSString *tmpDir = NSTemporaryDirectory();
-        NSString *filePath = [tmpDir stringByAppendingString:@"demo.caf"];
+        NSString *fileName = @"demo.caf";
+        NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *filePath = [path stringByAppendingString:fileName];
         NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
         
         NSDictionary *settings = @{
@@ -69,4 +79,37 @@
     [self.recorder pause];
 }
 
+- (void)stopwithCompletionHander:(THRecordingSaveCompletionHandler)handler {
+    self.completeHandler = handler;
+    [self.recorder stop];
+}
+
+- (void)saveRecorderWithName:(NSString *)name andCompletionHandler:(THRecordingSaveCompletionHandler)handler {
+    NSTimeInterval timestamp = [NSDate timeIntervalSinceReferenceDate];
+    NSString *fileName = [NSString stringWithFormat:@"/%@-%f.caf", name, timestamp];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *destPath = [path stringByAppendingString:fileName];
+    
+    NSURL *srcUrl = self.recorder.url;
+    NSURL *destUrl = [NSURL fileURLWithPath:destPath];
+    
+    NSData *recorderFile = [NSData dataWithContentsOfURL:srcUrl];
+    
+    NSError *error;
+    
+    BOOL success = [[NSFileManager defaultManager] createFileAtPath:destPath contents:recorderFile attributes:nil];
+    
+    
+//    BOOL success = [[NSFileManager defaultManager] copyItemAtURL:srcUrl toURL:destUrl error:&error];
+    //之所以放弃这个方法是因为有错误`you don't have permission to access ....`
+    if (success) {
+        handler(YES);
+        [self.recorder prepareToRecord];
+        NSLog(@"success--%@", destUrl);
+    }else {
+        handler(NO);
+        NSLog(@"fial--%@", error.localizedDescription);
+    }
+    
+}
 @end

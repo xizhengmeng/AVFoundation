@@ -27,6 +27,8 @@
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIButton *confirmBtn;
 
+@property (nonatomic, strong) UIButton *playRecordBtn;
+
 @end
 
 @implementation PlayerAudio
@@ -99,6 +101,10 @@
     [self.view addSubview:self.rateSlider];
     self.rateSlider.right = kScreenW - 20;
     self.rateSlider.bottom = self.voiceSlider.y - 10;
+    
+    [self.view addSubview:self.playRecordBtn];
+    self.playRecordBtn.x = 100;
+    self.playRecordBtn.y = self.play.bottom + 50;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -139,6 +145,23 @@
     [alert addAction:cancelAction];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)playRecordClick {
+    
+    NSString *tmpDir = NSTemporaryDirectory();
+    NSString *filePath = [tmpDir stringByAppendingString:@"demo.caf"];
+    NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
+
+    self.player1 = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
+    self.player1.enableRate = YES;//想要设置速率，要先设置这个属性
+    self.player1.rate = 2.0;
+    self.player1.numberOfLoops = -1;
+    self.player1.delegate = self;
+    if (self.player1) {
+        [self.player1 prepareToPlay];
+        self.play.enabled = YES;
+    }
 }
 
 - (void)clickToPlay {
@@ -271,6 +294,17 @@
         [_rateSlider addTarget:self action:@selector(panSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return _rateSlider;
+}
+
+- (UIButton *)playRecordBtn {
+    if (!_playRecordBtn) {
+        _playRecordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_playRecordBtn setTitle:@"播放录制的声音" forState:UIControlStateNormal];
+        [_playRecordBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_playRecordBtn sizeToFit];
+        [_playRecordBtn addTarget:self action:@selector(playRecordClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _playRecordBtn;
 }
 
 //其中代理函数有如下几个

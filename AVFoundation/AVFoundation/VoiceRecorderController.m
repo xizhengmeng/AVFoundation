@@ -26,13 +26,28 @@
 }
 
 - (void)recordClick:(UIButton *)btn {
-    [self.voiceRecorder record];
-    [btn setTitle:@"录制中" forState:UIControlStateNormal];
-    [btn sizeToFit];
+    
+    if ([btn.titleLabel.text isEqualToString:@"录制"]) {
+        [self.voiceRecorder record];
+        [btn setTitle:@"录制中" forState:UIControlStateNormal];
+        [btn sizeToFit];
+    }else if ([btn.titleLabel.text isEqualToString:@"录制中"]) {
+        [btn setTitle:@"录制" forState:UIControlStateNormal];
+        [btn sizeToFit];
+        [self stop];
+    }
+    
 }
 
 - (void)pause {
     [self.voiceRecorder pause];
+}
+
+- (void)stop {
+    WEAKSELF;
+    [self.voiceRecorder stopwithCompletionHander:^(BOOL complete) {
+        [weakSelf showAlertView];
+    }];
 }
 
 - (VoiceRecorder *)voiceRecorder {
@@ -51,6 +66,34 @@
         [_recorderBtn addTarget:self action:@selector(recordClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _recorderBtn;
+}
+
+- (void)showAlertView {
+    WEAKSELF;
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"请输入保存名称" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertVc addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+       textField.text = @"请输入名称";
+    }];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *name = alertVc.textFields[0].text;
+      [weakSelf.voiceRecorder saveRecorderWithName:name andCompletionHandler:^(BOOL success) {
+          
+      }];
+        
+    }];
+    
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+
+    [alertVc addAction:action];
+    
+    [alertVc addAction:cancle];
+    
+    [self presentViewController:alertVc animated:YES completion:nil];
 }
 
 @end
