@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray *urls;
 
+- (void)destroyPlayer;
+
 @end

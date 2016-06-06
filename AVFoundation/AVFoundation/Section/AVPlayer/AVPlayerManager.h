@@ -34,10 +34,12 @@
 - (void)stopUpdataTime;
 - (void)startUpdataTime;
 
+- (void)destroyPlayer;
+
 @property (nonatomic, strong) UIView *playerView;
 @property (nonatomic, assign) BOOL isPlaying;
 
-@property (nonatomic, assign) id <AVPlayerManagerDelegate> delegate;
+@property (nonatomic, weak) id <AVPlayerManagerDelegate> delegate;
 
 @end
 

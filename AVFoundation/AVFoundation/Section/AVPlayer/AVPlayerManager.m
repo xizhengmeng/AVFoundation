@@ -51,6 +51,19 @@
 
 @implementation AVPlayerManager
 
+- (void)destroyPlayer {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.queuePlayer pause];
+    [self.queuePlayer removeAllItems];
+    [self.queuePlayer removeTimeObserver:self.timeObserver];
+    
+    for (AVPlayerItem *item in self.playerItemArr) {
+        [item removeObserver:self forKeyPath:@"loadedTimeRanges"];
+    }
+    
+    self.queuePlayer = nil;
+}
+
 - (UIActivityIndicatorView *)indicatorView {
     if (!_indicatorView) {
         _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -135,15 +148,28 @@
 
 - (void)setPlayUrls:(NSArray *)urls {
     for (int i = 0; i < urls.count; i++) {
-        AVAsset *asset = [AVAsset assetWithURL:urls[i]];
+        
+        id url = urls[i];
+        
+        if ([url isKindOfClass:[NSString class]]) {
+            url = [NSURL URLWithString:url];
+        }
+        
+        AVAsset *asset = [AVAsset assetWithURL:url];
 
         AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset];
 
         [self.playerItemArr addObject:item];
 
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(nextVideo:)
+                                                     name:AVPlayerItemDidPlayToEndTimeNotification
+                                                   object:item ];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemFailedToPlayToEndTime:) name:AVPlayerItemPlaybackStalledNotification object:item];
+        
         if (i == 0) {
             [item addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-            
         }
         
         [item  addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
@@ -222,6 +248,19 @@
     self.needLoop = loop;
 }
 
+- (void)addItems:(NSArray *)items {
+    AVPlayerItem *firstItem = items.firstObject;
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:items];
+    [arr removeObject:firstItem];
+    NSLog(@"1----item%@", self.queuePlayer.items);
+    for (AVPlayerItem *item in arr) {
+        
+        [self.queuePlayer insertItem:item afterItem:firstItem];
+        firstItem = item;
+    }
+    NSLog(@"2----item%@", self.queuePlayer.items);
+}
+
 - (void)initPlayer {
     //重新连接的时候，先停止播放
     if (self.queuePlayer) {
@@ -230,18 +269,9 @@
     
     if (self.playerItemArr.count) {
         //释放原来的queue，重新创建
-        self.queuePlayer = [AVQueuePlayer queuePlayerWithItems:self.playerItemArr];
+        NSArray *arr = @[self.playerItemArr.firstObject];
+        self.queuePlayer = [AVQueuePlayer queuePlayerWithItems:arr];
         self.queuePlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-        
-        for(AVPlayerItem *item in self.playerItemArr) {
-            [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(nextVideo:)
-                                                         name:AVPlayerItemDidPlayToEndTimeNotification
-                                                       object:item ];
-            
-            
-           [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemFailedToPlayToEndTime:) name:AVPlayerItemPlaybackStalledNotification object:item];
-        }
         
         AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.queuePlayer];
 
@@ -283,6 +313,7 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    WEAKSELF;
     AVPlayerItem *item1 = (AVPlayerItem *)object;
     NSLog(@"%ld", item1.status);
     if ([keyPath isEqualToString:@"status"]) {
@@ -294,6 +325,9 @@
         if (item.status == AVPlayerItemStatusReadyToPlay) {
             NSLog(@"you can play");
             [self.queuePlayer play];
+            
+            [self performSelector:@selector(prepareFOrLoadMore) withObject:nil afterDelay:5];
+            
         }else {
             NSLog(@"无法播放");
             //重新连接然后播放
@@ -341,6 +375,14 @@
 
 }
 
+- (void)prepareFOrLoadMore {
+    WEAKSELF;
+    if (self.queuePlayer.items.count == self.playerItemArr.count) return;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [weakSelf addItems:self.playerItemArr];
+    });
+}
+
 - (NSTimeInterval)availableDuration {
     NSArray *loadedTimeRanges = [self.queuePlayer.currentItem loadedTimeRanges];CMTimeRange timeRange = [loadedTimeRanges.firstObject CMTimeRangeValue];// 获取缓冲区域
     double startSeconds = CMTimeGetSeconds(timeRange.start);
@@ -363,7 +405,7 @@
         weakSelf.duration = duration;
         weakSelf.nowTime = currentTime;
         count ++;
-        NSLog(@"currentTime---%d", (int)currentTime);
+//        NSLog(@"currentTime---%d", (int)currentTime);
         //主要为了解决回调的时间与拖动设置的时间不一致的时候，slider跳动的问题，所以对时间取整，然后进行判断，降低精度，进行模糊处理
         if ((self.currentProgress == (int)currentTime)) {
             self.canUpdate = YES;
@@ -438,4 +480,5 @@
     
     return CMTimeGetSeconds(audioDuration);
 }
+
 @end

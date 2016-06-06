@@ -16,6 +16,10 @@
 
 @implementation AVPlayerViewController
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.playerView destroyPlayer];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,12 +30,16 @@
     self.playerView.urls = self.showArr;
     
     [self.view addSubview:self.playerView];
+    self.playerView.y = 64;
 }
 
 - (NSMutableArray *)showArr {
     if (!_showArr) {
         _showArr = [NSMutableArray array];
         NSArray *arr = @[@"http://fx.v.kugou.com/G063/M01/07/17/34YBAFdVQ1WAdoDfAS5bU1epTxQ508.mp4",@"http://fx.v.kugou.com/G070/M04/18/1F/5oYBAFdVNqqAd29OASEupKgCneM091.mp4",@"http://fx.v.kugou.com/G072/M09/00/18/6IYBAFdVNVaAHbshAVJ_9TALO2o246.mp4"];
+        
+//        NSArray *arr = @[@"http://fx.v.kugou.com/G063/M01/07/17/34YBAFdVQ1WAdoDfAS5bU1epTxQ508.mp4"];
+        
         [_showArr addObjectsFromArray:arr];
     }
     return _showArr;
