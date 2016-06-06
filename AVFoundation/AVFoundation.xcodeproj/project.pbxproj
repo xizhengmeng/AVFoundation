@@ -15,16 +15,20 @@
 		7C0086DE1D03F77200EC5514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0086DC1D03F77200EC5514 /* LaunchScreen.storyboard */; };
 		7C0086E91D03F77200EC5514 /* AVFoundationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0086E81D03F77200EC5514 /* AVFoundationTests.m */; };
 		7C0086F41D03F77300EC5514 /* AVFoundationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0086F31D03F77200EC5514 /* AVFoundationUITests.m */; };
-		7C0087031D03F96600EC5514 /* SpeechSynthesizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087021D03F96600EC5514 /* SpeechSynthesizer.m */; };
 		7C0087051D03F97900EC5514 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0087041D03F97900EC5514 /* AVFoundation.framework */; };
 		7C0087371D03FE9A00EC5514 /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087301D03FE9A00EC5514 /* UIColor+Addition.m */; };
 		7C0087381D03FE9A00EC5514 /* UIControl+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087321D03FE9A00EC5514 /* UIControl+Extension.m */; };
 		7C0087391D03FE9A00EC5514 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087341D03FE9A00EC5514 /* UIImage+Extension.m */; };
 		7C00873A1D03FE9A00EC5514 /* UIView+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087361D03FE9A00EC5514 /* UIView+Metrics.m */; };
 		7C00873D1D040D2B00EC5514 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7C00873C1D040D2B00EC5514 /* demo.mp3 */; };
-		7C0087401D040D4C00EC5514 /* PlayerAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C00873F1D040D4C00EC5514 /* PlayerAudio.m */; };
-		7C0087431D04410F00EC5514 /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087421D04410F00EC5514 /* VoiceRecorder.m */; };
-		7C0087461D04452600EC5514 /* VoiceRecorderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087451D04452600EC5514 /* VoiceRecorderController.m */; };
+		7CD09BD91D057FC100371F4A /* AVPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BC91D057FC100371F4A /* AVPlayerManager.m */; };
+		7CD09BDA1D057FC100371F4A /* AVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BCB1D057FC100371F4A /* AVPlayerView.m */; };
+		7CD09BDB1D057FC100371F4A /* FXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BCD1D057FC100371F4A /* FXSlider.m */; };
+		7CD09BDC1D057FC100371F4A /* PlayerAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD01D057FC100371F4A /* PlayerAudio.m */; };
+		7CD09BDD1D057FC100371F4A /* SpeechSynthesizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD31D057FC100371F4A /* SpeechSynthesizer.m */; };
+		7CD09BDE1D057FC100371F4A /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD61D057FC100371F4A /* VoiceRecorder.m */; };
+		7CD09BDF1D057FC100371F4A /* VoiceRecorderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD81D057FC100371F4A /* VoiceRecorderController.m */; };
+		7CD09BE21D057FD800371F4A /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BE11D057FD800371F4A /* AVPlayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +65,6 @@
 		7C0086EF1D03F77200EC5514 /* AVFoundationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVFoundationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0086F31D03F77200EC5514 /* AVFoundationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVFoundationUITests.m; sourceTree = "<group>"; };
 		7C0086F51D03F77300EC5514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C0087011D03F96600EC5514 /* SpeechSynthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesizer.h; sourceTree = "<group>"; };
-		7C0087021D03F96600EC5514 /* SpeechSynthesizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesizer.m; sourceTree = "<group>"; };
 		7C0087041D03F97900EC5514 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7C00871B1D03FABF00EC5514 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
 		7C00872F1D03FE9A00EC5514 /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
@@ -74,12 +76,22 @@
 		7C0087351D03FE9A00EC5514 /* UIView+Metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Metrics.h"; sourceTree = "<group>"; };
 		7C0087361D03FE9A00EC5514 /* UIView+Metrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Metrics.m"; sourceTree = "<group>"; };
 		7C00873C1D040D2B00EC5514 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = "<group>"; };
-		7C00873E1D040D4C00EC5514 /* PlayerAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAudio.h; sourceTree = "<group>"; };
-		7C00873F1D040D4C00EC5514 /* PlayerAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerAudio.m; sourceTree = "<group>"; };
-		7C0087411D04410F00EC5514 /* VoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorder.h; sourceTree = "<group>"; };
-		7C0087421D04410F00EC5514 /* VoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorder.m; sourceTree = "<group>"; };
-		7C0087441D04452600EC5514 /* VoiceRecorderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorderController.h; sourceTree = "<group>"; };
-		7C0087451D04452600EC5514 /* VoiceRecorderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorderController.m; sourceTree = "<group>"; };
+		7CD09BC81D057FC100371F4A /* AVPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerManager.h; sourceTree = "<group>"; };
+		7CD09BC91D057FC100371F4A /* AVPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerManager.m; sourceTree = "<group>"; };
+		7CD09BCA1D057FC100371F4A /* AVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerView.h; sourceTree = "<group>"; };
+		7CD09BCB1D057FC100371F4A /* AVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerView.m; sourceTree = "<group>"; };
+		7CD09BCC1D057FC100371F4A /* FXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXSlider.h; sourceTree = "<group>"; };
+		7CD09BCD1D057FC100371F4A /* FXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXSlider.m; sourceTree = "<group>"; };
+		7CD09BCF1D057FC100371F4A /* PlayerAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAudio.h; sourceTree = "<group>"; };
+		7CD09BD01D057FC100371F4A /* PlayerAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerAudio.m; sourceTree = "<group>"; };
+		7CD09BD21D057FC100371F4A /* SpeechSynthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesizer.h; sourceTree = "<group>"; };
+		7CD09BD31D057FC100371F4A /* SpeechSynthesizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesizer.m; sourceTree = "<group>"; };
+		7CD09BD51D057FC100371F4A /* VoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorder.h; sourceTree = "<group>"; };
+		7CD09BD61D057FC100371F4A /* VoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorder.m; sourceTree = "<group>"; };
+		7CD09BD71D057FC100371F4A /* VoiceRecorderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorderController.h; sourceTree = "<group>"; };
+		7CD09BD81D057FC100371F4A /* VoiceRecorderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorderController.m; sourceTree = "<group>"; };
+		7CD09BE01D057FD800371F4A /* AVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
+		7CD09BE11D057FD800371F4A /* AVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,14 +149,7 @@
 				7C0086D21D03F77200EC5514 /* AppDelegate.m */,
 				7C0086D41D03F77200EC5514 /* ViewController.h */,
 				7C0086D51D03F77200EC5514 /* ViewController.m */,
-				7C0087011D03F96600EC5514 /* SpeechSynthesizer.h */,
-				7C0087021D03F96600EC5514 /* SpeechSynthesizer.m */,
-				7C00873E1D040D4C00EC5514 /* PlayerAudio.h */,
-				7C00873F1D040D4C00EC5514 /* PlayerAudio.m */,
-				7C0087441D04452600EC5514 /* VoiceRecorderController.h */,
-				7C0087451D04452600EC5514 /* VoiceRecorderController.m */,
-				7C0087411D04410F00EC5514 /* VoiceRecorder.h */,
-				7C0087421D04410F00EC5514 /* VoiceRecorder.m */,
+				7CD09BC61D057FC100371F4A /* Section */,
 				7C00873B1D040D0C00EC5514 /* resource */,
 				7C0086CE1D03F77200EC5514 /* Supporting Files */,
 			);
@@ -203,6 +208,61 @@
 				7C00873C1D040D2B00EC5514 /* demo.mp3 */,
 			);
 			name = resource;
+			sourceTree = "<group>";
+		};
+		7CD09BC61D057FC100371F4A /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				7CD09BC71D057FC100371F4A /* AVPlayer */,
+				7CD09BCE1D057FC100371F4A /* PlayAudio */,
+				7CD09BD11D057FC100371F4A /* Speech */,
+				7CD09BD41D057FC100371F4A /* VoiceRecoder */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		7CD09BC71D057FC100371F4A /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				7CD09BC81D057FC100371F4A /* AVPlayerManager.h */,
+				7CD09BC91D057FC100371F4A /* AVPlayerManager.m */,
+				7CD09BCA1D057FC100371F4A /* AVPlayerView.h */,
+				7CD09BCB1D057FC100371F4A /* AVPlayerView.m */,
+				7CD09BCC1D057FC100371F4A /* FXSlider.h */,
+				7CD09BCD1D057FC100371F4A /* FXSlider.m */,
+				7CD09BE01D057FD800371F4A /* AVPlayerViewController.h */,
+				7CD09BE11D057FD800371F4A /* AVPlayerViewController.m */,
+			);
+			path = AVPlayer;
+			sourceTree = "<group>";
+		};
+		7CD09BCE1D057FC100371F4A /* PlayAudio */ = {
+			isa = PBXGroup;
+			children = (
+				7CD09BCF1D057FC100371F4A /* PlayerAudio.h */,
+				7CD09BD01D057FC100371F4A /* PlayerAudio.m */,
+			);
+			path = PlayAudio;
+			sourceTree = "<group>";
+		};
+		7CD09BD11D057FC100371F4A /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				7CD09BD21D057FC100371F4A /* SpeechSynthesizer.h */,
+				7CD09BD31D057FC100371F4A /* SpeechSynthesizer.m */,
+			);
+			path = Speech;
+			sourceTree = "<group>";
+		};
+		7CD09BD41D057FC100371F4A /* VoiceRecoder */ = {
+			isa = PBXGroup;
+			children = (
+				7CD09BD51D057FC100371F4A /* VoiceRecorder.h */,
+				7CD09BD61D057FC100371F4A /* VoiceRecorder.m */,
+				7CD09BD71D057FC100371F4A /* VoiceRecorderController.h */,
+				7CD09BD81D057FC100371F4A /* VoiceRecorderController.m */,
+			);
+			path = VoiceRecoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,16 +396,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C0087401D040D4C00EC5514 /* PlayerAudio.m in Sources */,
+				7CD09BDB1D057FC100371F4A /* FXSlider.m in Sources */,
+				7CD09BDE1D057FC100371F4A /* VoiceRecorder.m in Sources */,
 				7C0086D61D03F77200EC5514 /* ViewController.m in Sources */,
 				7C0087391D03FE9A00EC5514 /* UIImage+Extension.m in Sources */,
+				7CD09BDF1D057FC100371F4A /* VoiceRecorderController.m in Sources */,
+				7CD09BE21D057FD800371F4A /* AVPlayerViewController.m in Sources */,
 				7C0086D31D03F77200EC5514 /* AppDelegate.m in Sources */,
-				7C0087431D04410F00EC5514 /* VoiceRecorder.m in Sources */,
-				7C0087031D03F96600EC5514 /* SpeechSynthesizer.m in Sources */,
+				7CD09BD91D057FC100371F4A /* AVPlayerManager.m in Sources */,
+				7CD09BDA1D057FC100371F4A /* AVPlayerView.m in Sources */,
 				7C0087381D03FE9A00EC5514 /* UIControl+Extension.m in Sources */,
+				7CD09BDC1D057FC100371F4A /* PlayerAudio.m in Sources */,
 				7C0086D01D03F77200EC5514 /* main.m in Sources */,
-				7C0087461D04452600EC5514 /* VoiceRecorderController.m in Sources */,
 				7C00873A1D03FE9A00EC5514 /* UIView+Metrics.m in Sources */,
+				7CD09BDD1D057FC100371F4A /* SpeechSynthesizer.m in Sources */,
 				7C0087371D03FE9A00EC5514 /* UIColor+Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
