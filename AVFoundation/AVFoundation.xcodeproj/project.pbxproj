@@ -29,6 +29,7 @@
 		7CD09BDE1D057FC100371F4A /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD61D057FC100371F4A /* VoiceRecorder.m */; };
 		7CD09BDF1D057FC100371F4A /* VoiceRecorderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD81D057FC100371F4A /* VoiceRecorderController.m */; };
 		7CD09BE21D057FD800371F4A /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BE11D057FD800371F4A /* AVPlayerViewController.m */; };
+		7CD09BE51D066F4F00371F4A /* AVPlayerCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BE41D066F4F00371F4A /* AVPlayerCacheManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		7CD09BD81D057FC100371F4A /* VoiceRecorderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorderController.m; sourceTree = "<group>"; };
 		7CD09BE01D057FD800371F4A /* AVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
 		7CD09BE11D057FD800371F4A /* AVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
+		7CD09BE31D066F4F00371F4A /* AVPlayerCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerCacheManager.h; sourceTree = "<group>"; };
+		7CD09BE41D066F4F00371F4A /* AVPlayerCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerCacheManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +227,8 @@
 		7CD09BC71D057FC100371F4A /* AVPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				7CD09BE31D066F4F00371F4A /* AVPlayerCacheManager.h */,
+				7CD09BE41D066F4F00371F4A /* AVPlayerCacheManager.m */,
 				7CD09BC81D057FC100371F4A /* AVPlayerManager.h */,
 				7CD09BC91D057FC100371F4A /* AVPlayerManager.m */,
 				7CD09BCA1D057FC100371F4A /* AVPlayerView.h */,
@@ -400,6 +405,7 @@
 				7CD09BDE1D057FC100371F4A /* VoiceRecorder.m in Sources */,
 				7C0086D61D03F77200EC5514 /* ViewController.m in Sources */,
 				7C0087391D03FE9A00EC5514 /* UIImage+Extension.m in Sources */,
+				7CD09BE51D066F4F00371F4A /* AVPlayerCacheManager.m in Sources */,
 				7CD09BDF1D057FC100371F4A /* VoiceRecorderController.m in Sources */,
 				7CD09BE21D057FD800371F4A /* AVPlayerViewController.m in Sources */,
 				7C0086D31D03F77200EC5514 /* AppDelegate.m in Sources */,

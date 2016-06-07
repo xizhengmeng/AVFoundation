@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVFoundation/Section/AVPlayer/AVPlayerManager.m"
-            timestampString = "486914628.269901"
+            timestampString = "486961545.592635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "467"
-            endingLineNumber = "467"
+            startingLineNumber = "435"
+            endingLineNumber = "435"
             landmarkName = "-getVideoImageWithPathUrl:size:atTime:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVFoundation/Section/AVPlayer/AVPlayerManager.m"
-            timestampString = "486914639.478359"
+            timestampString = "486961545.592635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "-getVideoImageWithPathUrl:size:atTime:"
             landmarkType = "5">
          </BreakpointContent>

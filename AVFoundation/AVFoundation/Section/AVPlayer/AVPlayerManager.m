@@ -11,7 +11,7 @@
 #import <MediaPlayer/MPVolumeView.h>
 #import <MediaPlayer/MPMusicPlayerController.h>
 #import "UIView+Metrics.h"
-
+#import "AVPlayerCacheManager.h"
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 #define iOS7  ( [[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending )
@@ -62,40 +62,6 @@
     }
     
     self.queuePlayer = nil;
-}
-
-- (UIActivityIndicatorView *)indicatorView {
-    if (!_indicatorView) {
-        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        _indicatorView.size = CGSizeMake(50, 50);
-    }
-    return _indicatorView;
-}
-
-- (UIImageView *)showImageView {
-    if (_showImageView == nil) {
-        _showImageView = [[UIImageView alloc] init];
-        _showImageView.backgroundColor = [UIColor clearColor];
-        _showImageView.image = [UIImage imageNamed:@"001"];
-        [_showImageView addSubview:self.indicatorView];
-    }
-    return _showImageView;
-}
-
-- (UIView *)playerView {
-    if (_playerView == nil) {
-        _playerView = [[UIView alloc] init];
-        _playerView.backgroundColor = [UIColor clearColor];
-        [_playerView addSubview:self.showImageView];
-    }
-    return _playerView;
-}
-
-- (NSMutableArray *)playerItemArr {
-    if (_playerItemArr == nil) {
-        _playerItemArr = [NSMutableArray array];
-    }
-    return _playerItemArr;
 }
 
 - (instancetype)initWithFrame:(CGRect)rect {
@@ -156,7 +122,9 @@
         }
         
         AVAsset *asset = [AVAsset assetWithURL:url];
-
+        
+        [AVPlayerCacheManager getMetadataWithAsset:asset];
+        
         AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset];
 
         [self.playerItemArr addObject:item];
@@ -479,6 +447,40 @@
     CMTime audioDuration = audioAsset.duration;
     
     return CMTimeGetSeconds(audioDuration);
+}
+
+- (UIActivityIndicatorView *)indicatorView {
+    if (!_indicatorView) {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _indicatorView.size = CGSizeMake(50, 50);
+    }
+    return _indicatorView;
+}
+
+- (UIImageView *)showImageView {
+    if (_showImageView == nil) {
+        _showImageView = [[UIImageView alloc] init];
+        _showImageView.backgroundColor = [UIColor clearColor];
+        _showImageView.image = [UIImage imageNamed:@"001"];
+        [_showImageView addSubview:self.indicatorView];
+    }
+    return _showImageView;
+}
+
+- (UIView *)playerView {
+    if (_playerView == nil) {
+        _playerView = [[UIView alloc] init];
+        _playerView.backgroundColor = [UIColor clearColor];
+        [_playerView addSubview:self.showImageView];
+    }
+    return _playerView;
+}
+
+- (NSMutableArray *)playerItemArr {
+    if (_playerItemArr == nil) {
+        _playerItemArr = [NSMutableArray array];
+    }
+    return _playerItemArr;
 }
 
 @end
