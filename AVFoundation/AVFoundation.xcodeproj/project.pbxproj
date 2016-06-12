@@ -21,15 +21,22 @@
 		7C0087391D03FE9A00EC5514 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087341D03FE9A00EC5514 /* UIImage+Extension.m */; };
 		7C00873A1D03FE9A00EC5514 /* UIView+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0087361D03FE9A00EC5514 /* UIView+Metrics.m */; };
 		7C00873D1D040D2B00EC5514 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7C00873C1D040D2B00EC5514 /* demo.mp3 */; };
-		7CD09BD91D057FC100371F4A /* AVPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BC91D057FC100371F4A /* AVPlayerManager.m */; };
-		7CD09BDA1D057FC100371F4A /* AVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BCB1D057FC100371F4A /* AVPlayerView.m */; };
-		7CD09BDB1D057FC100371F4A /* FXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BCD1D057FC100371F4A /* FXSlider.m */; };
+		7C2864CB1D08541D000EFDB1 /* AVPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864BC1D08541D000EFDB1 /* AVPlayerManager.m */; };
+		7C2864CC1D08541D000EFDB1 /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864BE1D08541D000EFDB1 /* AVPlayerViewController.m */; };
+		7C2864CD1D08541D000EFDB1 /* AVPlayerCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864C11D08541D000EFDB1 /* AVPlayerCacheManager.m */; };
+		7C2864CE1D08541D000EFDB1 /* AVPlayerThumbnails.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864C31D08541D000EFDB1 /* AVPlayerThumbnails.m */; };
+		7C2864CF1D08541D000EFDB1 /* THThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864C51D08541D000EFDB1 /* THThumbnail.m */; };
+		7C2864D01D08541D000EFDB1 /* AVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864C81D08541D000EFDB1 /* AVPlayerView.m */; };
+		7C2864D11D08541D000EFDB1 /* FXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864CA1D08541D000EFDB1 /* FXSlider.m */; };
+		7C2864D41D085491000EFDB1 /* CollectionShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864D31D085491000EFDB1 /* CollectionShowCell.m */; };
+		7C2864D71D085538000EFDB1 /* ImagesShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2864D61D085538000EFDB1 /* ImagesShowView.m */; };
+		7C63685E1D08F45C0089D2C1 /* demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7C63685D1D08F45C0089D2C1 /* demo.mp4 */; };
+		7C6368641D08FB0A0089D2C1 /* ReaderAndWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6368611D08FB0A0089D2C1 /* ReaderAndWriter.m */; };
+		7C6368671D08FB220089D2C1 /* ReaderAndWriterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6368661D08FB220089D2C1 /* ReaderAndWriterVC.m */; };
 		7CD09BDC1D057FC100371F4A /* PlayerAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD01D057FC100371F4A /* PlayerAudio.m */; };
 		7CD09BDD1D057FC100371F4A /* SpeechSynthesizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD31D057FC100371F4A /* SpeechSynthesizer.m */; };
 		7CD09BDE1D057FC100371F4A /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD61D057FC100371F4A /* VoiceRecorder.m */; };
 		7CD09BDF1D057FC100371F4A /* VoiceRecorderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD81D057FC100371F4A /* VoiceRecorderController.m */; };
-		7CD09BE21D057FD800371F4A /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BE11D057FD800371F4A /* AVPlayerViewController.m */; };
-		7CD09BE51D066F4F00371F4A /* AVPlayerCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BE41D066F4F00371F4A /* AVPlayerCacheManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,12 +84,29 @@
 		7C0087351D03FE9A00EC5514 /* UIView+Metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Metrics.h"; sourceTree = "<group>"; };
 		7C0087361D03FE9A00EC5514 /* UIView+Metrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Metrics.m"; sourceTree = "<group>"; };
 		7C00873C1D040D2B00EC5514 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = "<group>"; };
-		7CD09BC81D057FC100371F4A /* AVPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerManager.h; sourceTree = "<group>"; };
-		7CD09BC91D057FC100371F4A /* AVPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerManager.m; sourceTree = "<group>"; };
-		7CD09BCA1D057FC100371F4A /* AVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerView.h; sourceTree = "<group>"; };
-		7CD09BCB1D057FC100371F4A /* AVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerView.m; sourceTree = "<group>"; };
-		7CD09BCC1D057FC100371F4A /* FXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXSlider.h; sourceTree = "<group>"; };
-		7CD09BCD1D057FC100371F4A /* FXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXSlider.m; sourceTree = "<group>"; };
+		7C2864BB1D08541D000EFDB1 /* AVPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVPlayerManager.h; path = ../Controller/AVPlayerManager.h; sourceTree = "<group>"; };
+		7C2864BC1D08541D000EFDB1 /* AVPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AVPlayerManager.m; path = ../Controller/AVPlayerManager.m; sourceTree = "<group>"; };
+		7C2864BD1D08541D000EFDB1 /* AVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
+		7C2864BE1D08541D000EFDB1 /* AVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
+		7C2864C01D08541D000EFDB1 /* AVPlayerCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerCacheManager.h; sourceTree = "<group>"; };
+		7C2864C11D08541D000EFDB1 /* AVPlayerCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerCacheManager.m; sourceTree = "<group>"; };
+		7C2864C21D08541D000EFDB1 /* AVPlayerThumbnails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerThumbnails.h; sourceTree = "<group>"; };
+		7C2864C31D08541D000EFDB1 /* AVPlayerThumbnails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerThumbnails.m; sourceTree = "<group>"; };
+		7C2864C41D08541D000EFDB1 /* THThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THThumbnail.h; sourceTree = "<group>"; };
+		7C2864C51D08541D000EFDB1 /* THThumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THThumbnail.m; sourceTree = "<group>"; };
+		7C2864C71D08541D000EFDB1 /* AVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerView.h; sourceTree = "<group>"; };
+		7C2864C81D08541D000EFDB1 /* AVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerView.m; sourceTree = "<group>"; };
+		7C2864C91D08541D000EFDB1 /* FXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXSlider.h; sourceTree = "<group>"; };
+		7C2864CA1D08541D000EFDB1 /* FXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXSlider.m; sourceTree = "<group>"; };
+		7C2864D21D085491000EFDB1 /* CollectionShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionShowCell.h; sourceTree = "<group>"; };
+		7C2864D31D085491000EFDB1 /* CollectionShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionShowCell.m; sourceTree = "<group>"; };
+		7C2864D51D085538000EFDB1 /* ImagesShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesShowView.h; sourceTree = "<group>"; };
+		7C2864D61D085538000EFDB1 /* ImagesShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesShowView.m; sourceTree = "<group>"; };
+		7C63685D1D08F45C0089D2C1 /* demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo.mp4; sourceTree = "<group>"; };
+		7C6368601D08FB0A0089D2C1 /* ReaderAndWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderAndWriter.h; sourceTree = "<group>"; };
+		7C6368611D08FB0A0089D2C1 /* ReaderAndWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderAndWriter.m; sourceTree = "<group>"; };
+		7C6368651D08FB220089D2C1 /* ReaderAndWriterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderAndWriterVC.h; sourceTree = "<group>"; };
+		7C6368661D08FB220089D2C1 /* ReaderAndWriterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderAndWriterVC.m; sourceTree = "<group>"; };
 		7CD09BCF1D057FC100371F4A /* PlayerAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAudio.h; sourceTree = "<group>"; };
 		7CD09BD01D057FC100371F4A /* PlayerAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerAudio.m; sourceTree = "<group>"; };
 		7CD09BD21D057FC100371F4A /* SpeechSynthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesizer.h; sourceTree = "<group>"; };
@@ -91,10 +115,6 @@
 		7CD09BD61D057FC100371F4A /* VoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorder.m; sourceTree = "<group>"; };
 		7CD09BD71D057FC100371F4A /* VoiceRecorderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorderController.h; sourceTree = "<group>"; };
 		7CD09BD81D057FC100371F4A /* VoiceRecorderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorderController.m; sourceTree = "<group>"; };
-		7CD09BE01D057FD800371F4A /* AVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
-		7CD09BE11D057FD800371F4A /* AVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
-		7CD09BE31D066F4F00371F4A /* AVPlayerCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerCacheManager.h; sourceTree = "<group>"; };
-		7CD09BE41D066F4F00371F4A /* AVPlayerCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerCacheManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,13 +229,89 @@
 			isa = PBXGroup;
 			children = (
 				7C00873C1D040D2B00EC5514 /* demo.mp3 */,
+				7C63685D1D08F45C0089D2C1 /* demo.mp4 */,
 			);
 			name = resource;
+			sourceTree = "<group>";
+		};
+		7C2864BA1D08541D000EFDB1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7C2864BD1D08541D000EFDB1 /* AVPlayerViewController.h */,
+				7C2864BE1D08541D000EFDB1 /* AVPlayerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7C2864BF1D08541D000EFDB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C2864BB1D08541D000EFDB1 /* AVPlayerManager.h */,
+				7C2864BC1D08541D000EFDB1 /* AVPlayerManager.m */,
+				7C2864C01D08541D000EFDB1 /* AVPlayerCacheManager.h */,
+				7C2864C11D08541D000EFDB1 /* AVPlayerCacheManager.m */,
+				7C2864C21D08541D000EFDB1 /* AVPlayerThumbnails.h */,
+				7C2864C31D08541D000EFDB1 /* AVPlayerThumbnails.m */,
+				7C2864C41D08541D000EFDB1 /* THThumbnail.h */,
+				7C2864C51D08541D000EFDB1 /* THThumbnail.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C2864C61D08541D000EFDB1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C2864C71D08541D000EFDB1 /* AVPlayerView.h */,
+				7C2864C81D08541D000EFDB1 /* AVPlayerView.m */,
+				7C2864C91D08541D000EFDB1 /* FXSlider.h */,
+				7C2864CA1D08541D000EFDB1 /* FXSlider.m */,
+				7C2864D21D085491000EFDB1 /* CollectionShowCell.h */,
+				7C2864D31D085491000EFDB1 /* CollectionShowCell.m */,
+				7C2864D51D085538000EFDB1 /* ImagesShowView.h */,
+				7C2864D61D085538000EFDB1 /* ImagesShowView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C6368561D08F3AA0089D2C1 /* ReaderAndWriter */ = {
+			isa = PBXGroup;
+			children = (
+				7C63685F1D08FB0A0089D2C1 /* Model */,
+				7C6368621D08FB0A0089D2C1 /* View */,
+				7C6368631D08FB0A0089D2C1 /* ViewController */,
+			);
+			path = ReaderAndWriter;
+			sourceTree = "<group>";
+		};
+		7C63685F1D08FB0A0089D2C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C6368601D08FB0A0089D2C1 /* ReaderAndWriter.h */,
+				7C6368611D08FB0A0089D2C1 /* ReaderAndWriter.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C6368621D08FB0A0089D2C1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C6368631D08FB0A0089D2C1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7C6368651D08FB220089D2C1 /* ReaderAndWriterVC.h */,
+				7C6368661D08FB220089D2C1 /* ReaderAndWriterVC.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7CD09BC61D057FC100371F4A /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				7C6368561D08F3AA0089D2C1 /* ReaderAndWriter */,
 				7CD09BC71D057FC100371F4A /* AVPlayer */,
 				7CD09BCE1D057FC100371F4A /* PlayAudio */,
 				7CD09BD11D057FC100371F4A /* Speech */,
@@ -227,16 +323,9 @@
 		7CD09BC71D057FC100371F4A /* AVPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				7CD09BE31D066F4F00371F4A /* AVPlayerCacheManager.h */,
-				7CD09BE41D066F4F00371F4A /* AVPlayerCacheManager.m */,
-				7CD09BC81D057FC100371F4A /* AVPlayerManager.h */,
-				7CD09BC91D057FC100371F4A /* AVPlayerManager.m */,
-				7CD09BCA1D057FC100371F4A /* AVPlayerView.h */,
-				7CD09BCB1D057FC100371F4A /* AVPlayerView.m */,
-				7CD09BCC1D057FC100371F4A /* FXSlider.h */,
-				7CD09BCD1D057FC100371F4A /* FXSlider.m */,
-				7CD09BE01D057FD800371F4A /* AVPlayerViewController.h */,
-				7CD09BE11D057FD800371F4A /* AVPlayerViewController.m */,
+				7C2864BA1D08541D000EFDB1 /* Controller */,
+				7C2864BF1D08541D000EFDB1 /* Model */,
+				7C2864C61D08541D000EFDB1 /* View */,
 			);
 			path = AVPlayer;
 			sourceTree = "<group>";
@@ -376,6 +465,7 @@
 				7C0086DE1D03F77200EC5514 /* LaunchScreen.storyboard in Resources */,
 				7C0086DB1D03F77200EC5514 /* Assets.xcassets in Resources */,
 				7C0086D91D03F77200EC5514 /* Main.storyboard in Resources */,
+				7C63685E1D08F45C0089D2C1 /* demo.mp4 in Resources */,
 				7C00873D1D040D2B00EC5514 /* demo.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,20 +491,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CD09BDB1D057FC100371F4A /* FXSlider.m in Sources */,
+				7C2864D11D08541D000EFDB1 /* FXSlider.m in Sources */,
 				7CD09BDE1D057FC100371F4A /* VoiceRecorder.m in Sources */,
 				7C0086D61D03F77200EC5514 /* ViewController.m in Sources */,
 				7C0087391D03FE9A00EC5514 /* UIImage+Extension.m in Sources */,
-				7CD09BE51D066F4F00371F4A /* AVPlayerCacheManager.m in Sources */,
+				7C2864CB1D08541D000EFDB1 /* AVPlayerManager.m in Sources */,
+				7C2864CE1D08541D000EFDB1 /* AVPlayerThumbnails.m in Sources */,
+				7C2864D41D085491000EFDB1 /* CollectionShowCell.m in Sources */,
 				7CD09BDF1D057FC100371F4A /* VoiceRecorderController.m in Sources */,
-				7CD09BE21D057FD800371F4A /* AVPlayerViewController.m in Sources */,
 				7C0086D31D03F77200EC5514 /* AppDelegate.m in Sources */,
-				7CD09BD91D057FC100371F4A /* AVPlayerManager.m in Sources */,
-				7CD09BDA1D057FC100371F4A /* AVPlayerView.m in Sources */,
+				7C2864CD1D08541D000EFDB1 /* AVPlayerCacheManager.m in Sources */,
+				7C2864CF1D08541D000EFDB1 /* THThumbnail.m in Sources */,
+				7C6368641D08FB0A0089D2C1 /* ReaderAndWriter.m in Sources */,
 				7C0087381D03FE9A00EC5514 /* UIControl+Extension.m in Sources */,
 				7CD09BDC1D057FC100371F4A /* PlayerAudio.m in Sources */,
 				7C0086D01D03F77200EC5514 /* main.m in Sources */,
+				7C2864D01D08541D000EFDB1 /* AVPlayerView.m in Sources */,
+				7C2864CC1D08541D000EFDB1 /* AVPlayerViewController.m in Sources */,
 				7C00873A1D03FE9A00EC5514 /* UIView+Metrics.m in Sources */,
+				7C6368671D08FB220089D2C1 /* ReaderAndWriterVC.m in Sources */,
+				7C2864D71D085538000EFDB1 /* ImagesShowView.m in Sources */,
 				7CD09BDD1D057FC100371F4A /* SpeechSynthesizer.m in Sources */,
 				7C0087371D03FE9A00EC5514 /* UIColor+Addition.m in Sources */,
 			);

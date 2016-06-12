@@ -12,6 +12,8 @@
 #import <MediaPlayer/MPMusicPlayerController.h>
 #import "UIView+Metrics.h"
 #import "AVPlayerCacheManager.h"
+#import "AVPlayerThumbnails.h"
+
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 #define iOS7  ( [[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending )
@@ -47,6 +49,8 @@
 @property (nonatomic, assign) double nowTime;
 
 @property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
+@property (nonatomic, strong) AVPlayerThumbnails *thmbnals;
+
 @end
 
 @implementation AVPlayerManager
@@ -143,6 +147,20 @@
         [item  addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
     }
     
+    WEAKSELF;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        self.thmbnals = [[AVPlayerThumbnails alloc] init];
+        AVPlayerItem *item = self.playerItemArr.firstObject;
+        AVAsset *assett = item.asset;
+        [self.thmbnals generateThumbnailsWithAsset:assett];
+        
+        [self.thmbnals setGeneratorComplete:^(NSArray *arr) {
+            if (weakSelf.generatorComplete) {
+                weakSelf.generatorComplete(arr);
+            }
+        }];
+        
+    });
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //        self.showImages = [self getTheShowImagesWithUrls:urls];
 //    });
@@ -281,7 +299,7 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    WEAKSELF;
+
     AVPlayerItem *item1 = (AVPlayerItem *)object;
     NSLog(@"%ld", item1.status);
     if ([keyPath isEqualToString:@"status"]) {

@@ -8,10 +8,12 @@
 
 #import "AVPlayerViewController.h"
 #import "AVPlayerView.h"
+#import "ImagesShowView.h"
 
 @interface AVPlayerViewController()
 @property (nonatomic, strong) AVPlayerView *playerView;
 @property (nonatomic, strong) NSMutableArray *showArr;
+@property (nonatomic, strong) ImagesShowView *imageShowView;
 @end
 
 @implementation AVPlayerViewController
@@ -31,6 +33,16 @@
     
     [self.view addSubview:self.playerView];
     self.playerView.y = 64;
+    
+    WEAKSELF;
+    [self.playerView setGeneratorComplete:^(NSArray *arr) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.imageShowView reloadImages:arr];
+        });
+    }];
+    
+    [self.view addSubview:self.imageShowView];
+    self.imageShowView.y = self.playerView.bottom + 50;
 }
 
 - (NSMutableArray *)showArr {
@@ -43,6 +55,15 @@
         [_showArr addObjectsFromArray:arr];
     }
     return _showArr;
+}
+
+- (ImagesShowView *)imageShowView {
+    if (!_imageShowView) {
+        _imageShowView = [[ImagesShowView alloc] init];
+        _imageShowView.backgroundColor = [UIColor orangeColor];
+        _imageShowView.size = CGSizeMake(kScreenW, 200);
+    }
+    return _imageShowView;
 }
 
 @end

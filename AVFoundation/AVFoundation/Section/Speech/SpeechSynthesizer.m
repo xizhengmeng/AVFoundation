@@ -25,7 +25,6 @@
     if (!_speederBtn) {
         _speederBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_speederBtn setTitle:@"speeder" forState:UIControlStateNormal];
-        [_speederBtn addTarget:self action:@selector(speeker) forControlEvents:UIControlEventTouchUpInside];
         _speederBtn.backgroundColor = [UIColor orangeColor];
         [_speederBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_speederBtn sizeToFit];
@@ -110,10 +109,6 @@
         _tableView.estimatedRowHeight = 50;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL];
         _tableView.height = kScreenH - 60;
-//        _tableView.y = 64;
-//        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheView)];
-//        [_tableView addGestureRecognizer:tap];
     }
     return _tableView;
 }

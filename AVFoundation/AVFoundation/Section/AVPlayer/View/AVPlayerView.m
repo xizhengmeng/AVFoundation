@@ -12,6 +12,7 @@
 #import "UIView+Metrics.h"
 #import "FXSlider.h"
 
+
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 
@@ -42,6 +43,7 @@
 @property (nonatomic, assign) BOOL isHidden;
 
 @property (nonatomic, strong) UIView *tapView;
+
 @end
 
 @implementation AVPlayerView
@@ -126,6 +128,12 @@
 //初始化player
 - (void)configurePlayer {
     AVPlayerManager *manager = [[AVPlayerManager alloc] initWithFrame:self.bounds];
+    
+    [manager setGeneratorComplete:^(NSArray *arr) {
+        if (self.generatorComplete) {
+            self.generatorComplete(arr);
+        }
+    }];
     
     self.manager = manager;
     manager.delegate = self;

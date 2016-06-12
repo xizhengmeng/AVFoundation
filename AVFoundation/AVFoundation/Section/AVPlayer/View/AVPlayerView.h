@@ -10,6 +10,7 @@
 
 @interface AVPlayerView : UIView
 
+@property (nonatomic, copy) void(^generatorComplete)(NSArray *);
 @property (nonatomic, strong) NSMutableArray *urls;
 
 - (void)destroyPlayer;

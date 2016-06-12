@@ -36,6 +36,7 @@
 
 - (void)destroyPlayer;
 
+@property (nonatomic, copy) void(^generatorComplete)(NSArray *);
 @property (nonatomic, strong) UIView *playerView;
 @property (nonatomic, assign) BOOL isPlaying;
 
