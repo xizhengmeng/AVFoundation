@@ -9,6 +9,12 @@
 #import <AVFoundation/AVFoundation.h>
 #define WEAKSELF __weak __typeof(&*self)weakSelf = self
 
+#define DLog( s, ... ) NSLog( @"<%@:(%d)> %@",  [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
+
+#define iOS7  ( [[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending )
+#define iOS8  ( [[[UIDevice currentDevice] systemVersion] compare:@"8.0"] != NSOrderedAscending )
+
 #endif
