@@ -12,6 +12,7 @@
 #import "VoiceRecorderController.h"
 #import "AVPlayerViewController.h"
 #import "ReaderAndWriterVC.h"
+#import "CameraViewController.h"
 #define CELL @"cell"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -23,7 +24,7 @@
 - (NSMutableArray *)dataArr {
     if (!_dataArr) {
         _dataArr = [NSMutableArray array];
-        [_dataArr addObjectsFromArray:@[@"1.文本到语音",@"2.播放音乐AVAuidoPlayer",@"3.录音",@"4.播放视频",@"5.AVAssetReader and writer"]];
+        [_dataArr addObjectsFromArray:@[@"1.文本到语音",@"2.播放音乐AVAuidoPlayer",@"3.录音",@"4.播放视频",@"5.AVAssetReader and writer",@"6.照相",@"7.录像"]];
     }
     return _dataArr;
 }
@@ -102,6 +103,12 @@
         case 4:
         {
             ReaderAndWriterVC *vc = [[ReaderAndWriterVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 5:
+        {
+            CameraViewController *vc = [[CameraViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

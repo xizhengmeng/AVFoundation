@@ -33,6 +33,7 @@
 		7C63685E1D08F45C0089D2C1 /* demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7C63685D1D08F45C0089D2C1 /* demo.mp4 */; };
 		7C6368641D08FB0A0089D2C1 /* ReaderAndWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6368611D08FB0A0089D2C1 /* ReaderAndWriter.m */; };
 		7C6368671D08FB220089D2C1 /* ReaderAndWriterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6368661D08FB220089D2C1 /* ReaderAndWriterVC.m */; };
+		7C70AD8B1D2612A200033026 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C70AD8A1D2612A200033026 /* CameraViewController.m */; };
 		7CD09BDC1D057FC100371F4A /* PlayerAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD01D057FC100371F4A /* PlayerAudio.m */; };
 		7CD09BDD1D057FC100371F4A /* SpeechSynthesizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD31D057FC100371F4A /* SpeechSynthesizer.m */; };
 		7CD09BDE1D057FC100371F4A /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD09BD61D057FC100371F4A /* VoiceRecorder.m */; };
@@ -107,6 +108,8 @@
 		7C6368611D08FB0A0089D2C1 /* ReaderAndWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderAndWriter.m; sourceTree = "<group>"; };
 		7C6368651D08FB220089D2C1 /* ReaderAndWriterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderAndWriterVC.h; sourceTree = "<group>"; };
 		7C6368661D08FB220089D2C1 /* ReaderAndWriterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderAndWriterVC.m; sourceTree = "<group>"; };
+		7C70AD891D2612A200033026 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		7C70AD8A1D2612A200033026 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		7CD09BCF1D057FC100371F4A /* PlayerAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAudio.h; sourceTree = "<group>"; };
 		7CD09BD01D057FC100371F4A /* PlayerAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerAudio.m; sourceTree = "<group>"; };
 		7CD09BD21D057FC100371F4A /* SpeechSynthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesizer.h; sourceTree = "<group>"; };
@@ -308,9 +311,75 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7C70AD811D2611F700033026 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				7C70AD861D26127D00033026 /* Model */,
+				7C70AD871D26127D00033026 /* View */,
+				7C70AD881D26127D00033026 /* ViewController */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		7C70AD821D2611F700033026 /* Record Video */ = {
+			isa = PBXGroup;
+			children = (
+				7C70AD831D26127400033026 /* Model */,
+				7C70AD841D26127400033026 /* View */,
+				7C70AD851D26127400033026 /* ViewController */,
+			);
+			path = "Record Video";
+			sourceTree = "<group>";
+		};
+		7C70AD831D26127400033026 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C70AD841D26127400033026 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C70AD851D26127400033026 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7C70AD861D26127D00033026 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C70AD871D26127D00033026 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C70AD881D26127D00033026 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7C70AD891D2612A200033026 /* CameraViewController.h */,
+				7C70AD8A1D2612A200033026 /* CameraViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7CD09BC61D057FC100371F4A /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				7C70AD811D2611F700033026 /* Camera */,
+				7C70AD821D2611F700033026 /* Record Video */,
 				7C6368561D08F3AA0089D2C1 /* ReaderAndWriter */,
 				7CD09BC71D057FC100371F4A /* AVPlayer */,
 				7CD09BCE1D057FC100371F4A /* PlayAudio */,
@@ -498,6 +567,7 @@
 				7C2864CB1D08541D000EFDB1 /* AVPlayerManager.m in Sources */,
 				7C2864CE1D08541D000EFDB1 /* AVPlayerThumbnails.m in Sources */,
 				7C2864D41D085491000EFDB1 /* CollectionShowCell.m in Sources */,
+				7C70AD8B1D2612A200033026 /* CameraViewController.m in Sources */,
 				7CD09BDF1D057FC100371F4A /* VoiceRecorderController.m in Sources */,
 				7C0086D31D03F77200EC5514 /* AppDelegate.m in Sources */,
 				7C2864CD1D08541D000EFDB1 /* AVPlayerCacheManager.m in Sources */,
