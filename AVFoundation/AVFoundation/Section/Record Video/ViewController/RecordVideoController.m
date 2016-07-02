@@ -16,6 +16,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @property (strong,nonatomic) AVCaptureSession *captureSession;//负责输入和输出设备之间的数据传递
 @property (strong,nonatomic) AVCaptureDeviceInput *captureDeviceInput;//负责从AVCaptureDevice获得输入数据
 @property (strong,nonatomic) AVCaptureMovieFileOutput *captureMovieFileOutput;//视频输出流
+@property (strong,nonatomic) AVCaptureVideoDataOutput *captureVideoDataOutput;//画面输出
 @property (strong,nonatomic) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;//相机拍摄预览图层
 @property (assign,nonatomic) BOOL enableRotation;//是否允许旋转（注意在视频录制过程中禁止屏幕旋转）
 @property (assign,nonatomic) CGRect *lastBounds;//旋转的前大小
@@ -67,6 +68,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     }
     //初始化设备输出对象，用于获得输出数据
     _captureMovieFileOutput=[[AVCaptureMovieFileOutput alloc]init];
+    
+    
     
     //将设备输入添加到会话中
     if ([_captureSession canAddInput:_captureDeviceInput]) {
@@ -411,6 +414,12 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         
     }];
 }
+////获取到输入数据的回调
+//- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+//    CVImageBufferRef imageBuffer=CMSampleBufferGetImageBuffer(sampleBuffer);
+//    DLog(@"-----buffer%@", imageBuffer);
+//}
+
 
 - (UIView *)viewContainer {
     if (!_viewContainer) {
