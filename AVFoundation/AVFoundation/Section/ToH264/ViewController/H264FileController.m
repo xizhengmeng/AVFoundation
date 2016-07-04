@@ -136,7 +136,8 @@
 #pragma mark -- manager X264
         manager264 = [[X264Manager alloc]init];
         [manager264 setFileSavedPath:[self savedFilePath]];
-        [manager264 setX264Resource];
+//        [manager264 setX264Resource];
+        [manager264 set264RTMP];
         
         [captureSession startRunning];
         

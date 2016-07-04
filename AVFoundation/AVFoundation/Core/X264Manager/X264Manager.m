@@ -16,7 +16,8 @@ extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 #include <libswscale/swscale.h>
-
+#include <libavutil/time.h>
+    
 #ifdef __cplusplus
 };
 #endif
@@ -39,6 +40,9 @@ extern "C" {
     
     int                                  encoder_h264_frame_width; // 编码的图像宽度
     int                                  encoder_h264_frame_height; // 编码的图像高度
+    int                                  frame_index;
+    int64_t                              start_time;
+    
 }
 
 
@@ -81,22 +85,22 @@ extern "C" {
     av_register_all(); // 注册FFmpeg所有编解码器
     
     //Method1.
-    pFormatCtx = avformat_alloc_context();
+    pFormatCtx = avformat_alloc_context();//封装格式
     //Guess Format
     fmt = av_guess_format(NULL, out_file, NULL);
-    pFormatCtx->oformat = fmt;
+    pFormatCtx->oformat = fmt;//获取输出格式
     
     // Method2.
     // avformat_alloc_output_context2(&pFormatCtx, NULL, NULL, out_file);
     // fmt = pFormatCtx->oformat;
     
     //Open output URL
-    if (avio_open(&pFormatCtx->pb, out_file, AVIO_FLAG_READ_WRITE) < 0){
+    if (avio_open(&pFormatCtx->pb, out_file, AVIO_FLAG_READ_WRITE) < 0){//AVIOContext创建流媒体协议环境
         printf("Failed to open output file! \n");
         return -1;
     }
     
-    video_st = avformat_new_stream(pFormatCtx, 0);
+    video_st = avformat_new_stream(pFormatCtx, 0);//创建流
     video_st->time_base.num = 1;
     video_st->time_base.den = 15;
     
@@ -105,7 +109,7 @@ extern "C" {
     }
     
     // Param that must set
-    pCodecCtx = video_st->codec;
+    pCodecCtx = video_st->codec;//获取输出的编码格式对象，对其进行设置
     pCodecCtx->codec_id = fmt->video_codec;
     pCodecCtx->codec_type = AVMEDIA_TYPE_VIDEO;
     pCodecCtx->pix_fmt = PIX_FMT_YUV420P;
@@ -167,6 +171,144 @@ extern "C" {
     return 0;
 }
 
+int fill_iobuffer(void * opaque,uint8_t *buf, int bufsize){
+//    if(!feof(fp_open)){
+//        int true_size=fread(buf,1,buf_size,fp_open);
+//        return true_size;
+//    }else{
+//        return -1;
+//    }
+    return 0;
+}
+
+- (int)set264RTMP {
+    int ret, i;
+    framecnt = 0;
+    
+    // AVCaptureSessionPresetMedium
+    encoder_h264_frame_width = 480;
+    encoder_h264_frame_height = 360;
+    
+    char output_str_full[500]={0};
+    
+    NSString *text = @"rtmp://172.17.9.145:1935/live1/room1";
+    sprintf(output_str_full,"%s",[text UTF8String]);
+    
+    strcpy(out_file, output_str_full);
+    
+    // AVCaptureSessionPresetHigh
+    //    encoder_h264_frame_width = 1920;
+    //    encoder_h264_frame_height = 1080;
+    
+    av_register_all(); // 注册FFmpeg所有编解码器
+    //Network
+    avformat_network_init();//全局初始化网络功能
+    pFormatCtx = avformat_alloc_context();
+    
+    unsigned char * iobuffer=(unsigned char *)av_malloc(32768);
+    AVIOContext *avio =avio_alloc_context(iobuffer, 32768,0,NULL,fill_iobuffer,NULL,NULL);
+    pFormatCtx->pb=avio;
+    avformat_open_input(&pFormatCtx, "nothing", NULL, NULL);
+    
+    //Method1.
+//    pFormatCtx = avformat_alloc_context();
+    //Guess Format
+//    fmt = av_guess_format(NULL, out_file, NULL);
+//    pFormatCtx->oformat = fmt;
+    
+    //Output
+    avformat_alloc_output_context2(&pFormatCtx, NULL, "flv", out_file); //RTMP
+    fmt = pFormatCtx->oformat;
+    //我们可以通过pFormatCtx = avformat_alloc_context();来初始化一个context，也可以通过上边这种方式，上边这种的好处是，在初始化的时候顺便就绑定了输出格式和输出的路径之类的
+    //需要注意的是，这里的路径如果是本地路径那么就相当于file类型，就是存在本地，如果是rtmp类型，那就是输出到一个流服务器
+    
+    if (!pFormatCtx) {
+        printf( "Could not create output context\n");
+        ret = AVERROR_UNKNOWN;
+//        goto end;
+    }
+    
+    //Open output URL
+    if (avio_open(&pFormatCtx->pb, out_file, AVIO_FLAG_READ_WRITE) < 0){
+        printf("Failed to open output file! \n");
+        return -1;
+    }
+    
+    video_st = avformat_new_stream(pFormatCtx, 0);
+    video_st->time_base.num = 1;
+    video_st->time_base.den = 15;
+
+    if (video_st==NULL){
+        return -1;
+    }
+    
+    start_time = av_gettime();
+    
+    // Param that must set
+    pCodecCtx = video_st->codec;
+    pCodecCtx->codec_id = AV_CODEC_ID_H264;
+    pCodecCtx->codec_type = AVMEDIA_TYPE_VIDEO;
+    pCodecCtx->pix_fmt = PIX_FMT_YUV420P;
+    pCodecCtx->width = encoder_h264_frame_width;
+    pCodecCtx->height = encoder_h264_frame_height;
+    pCodecCtx->time_base.num = 1;
+    pCodecCtx->time_base.den = 15;
+    pCodecCtx->bit_rate = 400000;
+    pCodecCtx->gop_size = 250;
+    // H264
+     pCodecCtx->me_range = 16;
+     pCodecCtx->max_qdiff = 4;
+     pCodecCtx->qcompress = 0.6;
+    pCodecCtx->flags = CODEC_FLAG_GLOBAL_HEADER;//设置global header
+    
+    pCodecCtx->qmin = 10;
+    pCodecCtx->qmax = 51;
+    
+    // Optional Param
+    pCodecCtx->max_b_frames=3;
+    
+    // Set Option
+    AVDictionary *param = 0;
+    
+    // H.264
+    if(pCodecCtx->codec_id == AV_CODEC_ID_H264) {
+        
+        av_dict_set(&param, "preset", "slow", 0);
+        av_dict_set(&param, "tune", "zerolatency", 0);
+        // av_dict_set(&param, "profile", "main", 0);
+    }
+    
+    // Show some Information
+    av_dump_format(pFormatCtx, 0, out_file, 1);
+    
+    pCodec = avcodec_find_encoder(pCodecCtx->codec_id);
+    if (!pCodec) {
+        
+        printf("Can not find encoder! \n");
+        return -1;
+    }
+    
+    if (avcodec_open2(pCodecCtx, pCodec,&param) < 0) {
+        
+        printf("Failed to open encoder! \n");
+        return -1;
+    }
+    
+    pFrame = av_frame_alloc();
+    //    picture_size = avpicture_get_size(pCodecCtx->pix_fmt, pCodecCtx->width, pCodecCtx->height);
+    //    picture_buf = (uint8_t *)av_malloc(picture_size);
+    avpicture_fill((AVPicture *)pFrame, picture_buf, pCodecCtx->pix_fmt, pCodecCtx->width, pCodecCtx->height);
+    
+    //Write File Header
+    avformat_write_header(pFormatCtx, NULL);
+    
+    av_new_packet(&pkt, picture_size);
+    
+    y_size = pCodecCtx->width * pCodecCtx->height;
+    
+    return 0;
+}
+
 /*
  * 将CMSampleBufferRef格式的数据编码成h264并写入文件
  * 
@@ -204,7 +346,7 @@ extern "C" {
         UInt8 *yuv420_data = (UInt8 *)malloc(width * height *3/ 2); // buffer to store YUV with layout YYYYYYYYUUVV
         
         /* convert NV12 data to YUV420*/
-        UInt8 *pY = bufferPtr ;
+        UInt8 *pY = bufferPtr;
         UInt8 *pUV = bufferPtr1;
         UInt8 *pU = yuv420_data + width*height;
         UInt8 *pV = pU + width*height/4;
@@ -228,6 +370,7 @@ extern "C" {
         // add code to scale image here
         // ...
         
+        
         //Read raw YUV data
         picture_buf = yuv420_data;
         pFrame->data[0] = picture_buf;              // Y
@@ -249,6 +392,52 @@ extern "C" {
             printf("Failed to encode! \n");
             
         }
+        
+        int videoindex = -1;
+        for(int i=0; i<pFormatCtx->nb_streams; i++) {
+            if(pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_VIDEO){
+                videoindex=i;//找到第几个流是video
+                break;
+            }
+        }
+            
+        //Simple Write PTS
+        if(pkt.pts==AV_NOPTS_VALUE){
+            //Write PTS
+            AVRational time_base1=pFormatCtx->streams[videoindex]->time_base;
+            //Duration between 2 frames (us)
+            int64_t calc_duration=(double)AV_TIME_BASE/av_q2d(pFormatCtx->streams[videoindex]->r_frame_rate);
+            //Parameters
+            pkt.pts=(double)(frame_index*calc_duration)/(double)(av_q2d(time_base1)*AV_TIME_BASE);
+            pkt.dts=pkt.pts;
+            pkt.duration=(double)calc_duration/(double)(av_q2d(time_base1)*AV_TIME_BASE);
+        }
+        
+        //Important:Delay
+        if(pkt.stream_index==videoindex){
+            AVRational time_base=pFormatCtx->streams[videoindex]->time_base;
+            AVRational time_base_q={1,AV_TIME_BASE};
+            int64_t pts_time = av_rescale_q(pkt.dts, time_base, time_base_q);
+            int64_t now_time = av_gettime() - start_time;
+            if (pts_time > now_time)
+                av_usleep(pts_time - now_time);
+            
+        }
+        
+//        in_stream = pFormatCtx_int->streams[pkt.stream_index];
+//        out_stream = pFormatCtx_out->streams[pkt.stream_index];
+//        /* copy packet */
+//        //Convert PTS/DTS
+//        pkt.pts = av_rescale_q_rnd(pkt.pts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
+//        pkt.dts = av_rescale_q_rnd(pkt.dts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
+//        pkt.duration = av_rescale_q(pkt.duration, in_stream->time_base, out_stream->time_base);
+//        pkt.pos = -1;
+        
+        if(pkt.stream_index==videoindex){
+            printf("Send %8d video frames to output URL\n",frame_index);
+            frame_index++;
+        }
+        
         if (got_picture==1) {
             
             printf("Succeed to encode frame: %5d\tsize:%5d\n", framecnt, pkt.size);

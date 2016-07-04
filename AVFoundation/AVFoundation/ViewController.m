@@ -17,6 +17,7 @@
 #import "PhotosViewController.h"
 #import "VideoHandleController.h"
 #import "H264FileController.h"
+#import "CameraToRTMP.h"
 #define CELL @"cell"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -28,7 +29,7 @@
 - (NSMutableArray *)dataArr {
     if (!_dataArr) {
         _dataArr = [NSMutableArray array];
-        [_dataArr addObjectsFromArray:@[@"1.文本到语音",@"2.播放音乐AVAuidoPlayer",@"3.录音",@"4.播放视频",@"5.AVAssetReader and writer",@"6.照相",@"7.录像",@"8.相册操作",@"9.视频数据保存为图片",@"10.摄像头数据保存为h.264文件"]];
+        [_dataArr addObjectsFromArray:@[@"1.文本到语音",@"2.播放音乐AVAuidoPlayer",@"3.录音",@"4.播放视频",@"5.AVAssetReader and writer",@"6.照相",@"7.录像",@"8.相册操作",@"9.视频数据保存为图片",@"10.摄像头数据保存为h.264文件",@"11.直播"]];
     }
     return _dataArr;
 }
@@ -137,6 +138,12 @@
         case 9:
         {
             H264FileController *vc = [[H264FileController alloc] init];//将录制的内容转化为h264文件
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 10:
+        {
+            CameraToRTMP *vc = [[CameraToRTMP alloc] init];//将录制的内容转化为h264文件
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

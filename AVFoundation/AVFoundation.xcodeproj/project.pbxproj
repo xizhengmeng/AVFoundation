@@ -57,6 +57,8 @@
 		7C3CC0431D27A04A00E9B9FF /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC0421D27A04A00E9B9FF /* libbz2.tbd */; };
 		7C3CC0451D27A05500E9B9FF /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC0441D27A05500E9B9FF /* libiconv.tbd */; };
 		7C3CC0471D27A05E00E9B9FF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC0461D27A05E00E9B9FF /* libz.tbd */; };
+		7C3CC0511D28D3B500E9B9FF /* CameraToRTMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CC0501D28D3B400E9B9FF /* CameraToRTMP.m */; };
+		7C3CC0531D28DCE400E9B9FF /* 001.mov in Resources */ = {isa = PBXBuildFile; fileRef = 7C3CC0521D28DCE400E9B9FF /* 001.mov */; };
 		7C63685E1D08F45C0089D2C1 /* demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7C63685D1D08F45C0089D2C1 /* demo.mp4 */; };
 /* End PBXBuildFile section */
 
@@ -262,6 +264,9 @@
 		7C3CC0421D27A04A00E9B9FF /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		7C3CC0441D27A05500E9B9FF /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		7C3CC0461D27A05E00E9B9FF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7C3CC04F1D28D3B400E9B9FF /* CameraToRTMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraToRTMP.h; sourceTree = "<group>"; };
+		7C3CC0501D28D3B400E9B9FF /* CameraToRTMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraToRTMP.m; sourceTree = "<group>"; };
+		7C3CC0521D28DCE400E9B9FF /* 001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 001.mov; sourceTree = "<group>"; };
 		7C63685D1D08F45C0089D2C1 /* demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -392,6 +397,7 @@
 		7C00873B1D040D0C00EC5514 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				7C3CC0521D28DCE400E9B9FF /* 001.mov */,
 				7C00873C1D040D2B00EC5514 /* demo.mp3 */,
 				7C63685D1D08F45C0089D2C1 /* demo.mp4 */,
 			);
@@ -401,6 +407,7 @@
 		7C2B57571D26463300B01BCE /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				7C3CC04B1D28D39E00E9B9FF /* CameraToRTMP */,
 				7C3CBE2F1D278C5D00E9B9FF /* ToH264 */,
 				7C3CBDE91D26601200E9B9FF /* VideoHandle */,
 				7C2B57581D26463300B01BCE /* AVPlayer */,
@@ -934,6 +941,39 @@
 			path = X264Manager;
 			sourceTree = "<group>";
 		};
+		7C3CC04B1D28D39E00E9B9FF /* CameraToRTMP */ = {
+			isa = PBXGroup;
+			children = (
+				7C3CC04C1D28D39E00E9B9FF /* Model */,
+				7C3CC04D1D28D39E00E9B9FF /* View */,
+				7C3CC04E1D28D39E00E9B9FF /* ViewController */,
+			);
+			path = CameraToRTMP;
+			sourceTree = "<group>";
+		};
+		7C3CC04C1D28D39E00E9B9FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C3CC04D1D28D39E00E9B9FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C3CC04E1D28D39E00E9B9FF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7C3CC04F1D28D3B400E9B9FF /* CameraToRTMP.h */,
+				7C3CC0501D28D3B400E9B9FF /* CameraToRTMP.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1038,6 +1078,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C3CC0531D28DCE400E9B9FF /* 001.mov in Resources */,
 				7C0086DE1D03F77200EC5514 /* LaunchScreen.storyboard in Resources */,
 				7C0086DB1D03F77200EC5514 /* Assets.xcassets in Resources */,
 				7C0086D91D03F77200EC5514 /* Main.storyboard in Resources */,
@@ -1107,6 +1148,7 @@
 				7C2B57AA1D26463300B01BCE /* CameraViewController.m in Sources */,
 				7C2B57AD1D26463300B01BCE /* CommonPhotoManager.m in Sources */,
 				7C0087381D03FE9A00EC5514 /* UIControl+Extension.m in Sources */,
+				7C3CC0511D28D3B500E9B9FF /* CameraToRTMP.m in Sources */,
 				7C2B57A21D26463300B01BCE /* AVPlayerViewController.m in Sources */,
 				7C0086D01D03F77200EC5514 /* main.m in Sources */,
 				7C2B57B31D26463300B01BCE /* PlayerAudio.m in Sources */,

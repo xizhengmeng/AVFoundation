@@ -32,5 +32,5 @@
  */
 - (void)freeX264Resource;
 
-
+- (int)set264RTMP;
 @end
